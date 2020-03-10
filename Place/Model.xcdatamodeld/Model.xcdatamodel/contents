@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Money" representedClassName="Money" syncable="YES">
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="currency" attributeType="String"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="cost" inverseEntity="Place"/>
+    </entity>
+    <entity name="Place" representedClassName="Place" syncable="YES">
+        <attribute name="comment" attributeType="String"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="rate" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="transport" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cost" maxCount="1" deletionRule="Cascade" destinationEntity="Money" inverseName="place" inverseEntity="Money"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="places" inverseEntity="Trip"/>
+    </entity>
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="comment" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="places" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Place" inverseName="trip" inverseEntity="Place"/>
+    </entity>
+    <elements>
+        <element name="Money" positionX="-54" positionY="36" width="128" height="88"/>
+        <element name="Place" positionX="-244.8828125" positionY="67.1015625" width="128" height="163"/>
+        <element name="Trip" positionX="214.38671875" positionY="161.1015625" width="128" height="103"/>
+    </elements>
+</model>
